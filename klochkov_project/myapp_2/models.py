@@ -10,6 +10,9 @@ class User(models.Model):
     password = models.CharField(max_length=100)
     age = models.IntegerField()
 
+    def __str__(self) -> str:
+        return f'Username: {self.name}, email: {self.email}, age: {self.age}'
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -18,6 +21,7 @@ class Product(models.Model):
     stock = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='products/')
 
     def __str__(self):
         return self.name
@@ -40,3 +44,20 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f'{self.quantity} x {self.product.name}'
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+
+    def __str__(self):
+        return f'Name: {self.name}, email: {self.email}'
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f'Title is {self.title}'
