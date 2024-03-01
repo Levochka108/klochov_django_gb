@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'admin_app',
     'recipes_app',
     'myapp_2',
+    'myapp_3',
+    'myapp_4',
+    'myapp_5',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +60,9 @@ ROOT_URLCONF = 'klochkov_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
